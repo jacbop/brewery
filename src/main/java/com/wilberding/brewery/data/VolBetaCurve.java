@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2017 - present by wilberding.com
+ *
+ * Please see distribution for license.
+ */
 package com.wilberding.brewery.data;
 
 import com.wilberding.brewery.lib.CtoF;
@@ -7,6 +12,7 @@ import com.wilberding.brewery.lib.LinearInterpolator;
 
 /**
  * Curve describing the Volumetric Temperature Coefficients - β - for water
+ * m^3/m^3*C
  * http://www.engineeringtoolbox.com/volumetric-temperature-expansion-d_315.html
  */
 public enum VolBetaCurve {
@@ -28,7 +34,7 @@ public enum VolBetaCurve {
             {90.0, 0.000695},
     };
 
-    private VolBetaCurve() {
+    VolBetaCurve() {
         this.curve = x -> LinearInterpolator.interpolate(CtoF.toC(x), data);
     }
 

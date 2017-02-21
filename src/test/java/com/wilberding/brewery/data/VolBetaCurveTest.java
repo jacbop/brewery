@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2017 - present by wilberding.com
+ *
+ * Please see distribution for license.
+ */
 package com.wilberding.brewery.data;
 
 import com.wilberding.brewery.lib.Curve;
@@ -12,9 +17,9 @@ public class VolBetaCurveTest {
     public void testBasics() {
         Curve sut = VolBetaCurve.INSTANCE.getCurve();
         assertThat(sut.y(32.0)).isEqualTo(-5.0E-5);
-        assertThat(sut.y(100.0)).isEqualTo(0.29999999999999716);
-        assertThat(sut.y(149.0)).isEqualTo(0.006000000000000227);
-        assertThat(sut.y(150.0)).isEqualTo(150.0);
-        assertThat(sut.y(212.0)).isEqualTo(210.0);
+        assertThat(sut.y(100.0)).isEqualTo(3.6677777777777777E-4);
+        assertThat(sut.y(149.0)).isEqualTo(5.52E-4);
+        assertThat(sut.y(150.0)).isEqualTo(5.553333333333334E-4);
+        assertThat(sut.y(212.0)).isEqualTo(6.95E-4);
     }
 }

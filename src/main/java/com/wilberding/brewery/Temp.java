@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2017 - present by wilberding.com
+ *
+ * Please see distribution for license.
+ */
 package com.wilberding.brewery;
 
 import com.martiansoftware.nailgun.NGContext;
@@ -11,12 +16,16 @@ public class Temp {
         if (input == null) {
             context.exit(1);
         } else {
-            Curve curve = TempCurve.INSTANCE.getCurve();
             double observedTemp = Double.parseDouble(input);
-            double delta = curve.y(observedTemp);
-            double actualTemp = observedTemp + delta;
+            double actualTemp = actualTemp(observedTemp);
             context.out.println(String.format("Observed %s = Actual %s", observedTemp, actualTemp));
         }
+    }
+
+    static double actualTemp(double observedTemp) {
+        Curve curve = TempCurve.INSTANCE.getCurve();
+        double actualTemp = curve.y(observedTemp);
+        return actualTemp;
     }
 
 }

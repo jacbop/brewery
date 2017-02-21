@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2017 - present by wilberding.com
+ *
+ * Please see distribution for license.
+ */
 package com.wilberding.brewery.lib;
 
 import org.junit.Test;

@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2017 - present by wilberding.com
+ *
+ * Please see distribution for license.
+ */
 package com.wilberding.brewery.data;
 
 import com.wilberding.brewery.lib.Curve;
@@ -16,7 +21,7 @@ public enum TempCurve {
             {212.0, 210.0}
     };
 
-    private TempCurve() {
+    TempCurve() {
         this.curve = x -> LinearInterpolator.interpolate(x, data);
     }
 

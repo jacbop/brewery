@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2017 - present by wilberding.com
+ *
+ * Please see distribution for license.
+ */
 package com.wilberding.brewery.lib;
 
 public class LinearInterpolator {
@@ -17,11 +22,11 @@ public class LinearInterpolator {
         for (int i = 0; i < data.length; i++) {
             if (x < data[i][0]) {
                 // extrapolate left
-                return data[i][1] - data[i][0];
+                return data[i][1];
             }
             if (i == data.length - 1) {
                 // extrapolate right
-                return data[i][1] - data[i][0];
+                return data[i][1];
             }
             if (x >= data[i][0] && x > data[i + 1][0]) {
                 // have not found correct bucket yet
@@ -36,9 +41,9 @@ public class LinearInterpolator {
                             data[i][1],
                             data[i + 1][1]
                     );
-            return y2 - x;
+            return y2;
         }
         // did not find a match
-        return data[data.length - 1][1] - data[data.length - 1][0];
+        throw new RuntimeException("Was not able to interpolate " + x);
     }
 }
