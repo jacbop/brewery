@@ -1,0 +1,7 @@
+ng ng-stop
+cd ${BREWERY_HOME}
+nohup java -cp ~/.m2/repository/com/wilberding/brewery/1.0-SNAPSHOT/brewery-1.0-SNAPSHOT-shade.jar com.martiansoftware.nailgun.NGServer > /tmp/nailgun.log 2>&1 &
+
+sleep 1
+ng ng-alias temp com.wilberding.brewery.Temp
+ng ng-alias vol com.wilberding.brewery.Volume
