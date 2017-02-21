@@ -1,5 +1,17 @@
 # brewery
 
+```
+git clone git@github.com:martylamb/nailgun.git
+cd nailgun
+make && sudo make install
+cd ..
+git clone git@github.com:jacbop/brewery.git
+cd brewery
+mvn install
+./run
+ng temp
+```
+
 ## temp
 (observedTemp: Double) => actualTemp: Double
 
