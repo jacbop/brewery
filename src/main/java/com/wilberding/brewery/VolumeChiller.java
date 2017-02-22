@@ -7,11 +7,12 @@ package com.wilberding.brewery;
 
 import com.martiansoftware.nailgun.NGContext;
 import com.wilberding.brewery.data.Constants;
+import com.wilberding.brewery.data.Observables;
 import com.wilberding.brewery.data.VolBetaCurve;
 import com.wilberding.brewery.lib.CtoF;
 import com.wilberding.brewery.lib.Curve;
 
-public class Volume {
+public class VolumeChiller {
 
     public static void nailMain(NGContext context) {
         String volString = javax.swing.JOptionPane.showInputDialog(null, "Observed Volume:");
@@ -27,7 +28,7 @@ public class Volume {
                 double vol1 = actualVolume(observedVolume, observedTemp);
                 context.out.println(
                         String.format(
-                                "Observed Volume (no chiller) %s @ %s F = Actual %s @ %s F",
+                                "Observed Volume (with chiller) %s @ %s F = Actual %s @ %s F",
                                 observedVolume, observedTemp, vol1, Constants.refTemp));
                 context.exit(0);
             }
@@ -36,7 +37,7 @@ public class Volume {
 
     static double actualVolume(double observedVolume, double observedTemp) {
         Curve curve = VolBetaCurve.INSTANCE.getCurve();
-        double vol2 = observedVolume;
+        double vol2 = observedVolume - Observables.chillerDisplacement;
         double temp2 = CtoF.toC(observedTemp);
         double temp1 = CtoF.toC(Constants.refTemp);
         double beta2 = curve.y(temp2);

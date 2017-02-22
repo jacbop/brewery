@@ -5,3 +5,5 @@ nohup java -cp ~/.m2/repository/com/wilberding/brewery/1.0-SNAPSHOT/brewery-1.0-
 sleep 1
 ng ng-alias temp com.wilberding.brewery.Temp
 ng ng-alias vol com.wilberding.brewery.Volume
+ng ng-alias volc com.wilberding.brewery.VolumeChiller
+ng ng-alias heat com.wilberding.brewery.HeatTime

@@ -19,6 +19,7 @@ public class Temp {
             double observedTemp = Double.parseDouble(input);
             double actualTemp = actualTemp(observedTemp);
             context.out.println(String.format("Observed %s = Actual %s", observedTemp, actualTemp));
+            context.exit(0);
         }
     }
 
