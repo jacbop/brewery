@@ -13,4 +13,6 @@ public class Observables {
     // amount of displacement when chiller is inserted
     public static final double chillerDisplacement = 0.3; // gal
 
+    // grain saturation amount
+
 }
