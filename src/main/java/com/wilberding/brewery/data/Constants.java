@@ -7,7 +7,7 @@ package com.wilberding.brewery.data;
 
 public class Constants {
 
-    public static final double refTemp = 65.0;
+    public static final double refTemp = 55.0; // F
     // dead space kettle
     // displacement chiller
 }
