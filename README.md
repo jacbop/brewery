@@ -23,8 +23,16 @@ delta zero - temp at which delta is "zeroed"
 
 chiller, dead space, thermal expansion, ground water temp
 
-## strike water
+## strike water vol and temp
 grain temp, absorption
 
 ## efficiency
 pounds of grain and quanitity of hops
+
+## time to heat, to cool
+
+## infusion calcs
+
+split Observables from Constants and Reference
+factor curves with input and output transformations
+centralize calc logic in one place sep from commands
