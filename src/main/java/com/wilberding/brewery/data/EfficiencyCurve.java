@@ -9,20 +9,23 @@ import com.wilberding.brewery.lib.Curve;
 import com.wilberding.brewery.lib.LinearInterpolator;
 
 
-public enum TempCurve {
+public enum EfficiencyCurve {
     INSTANCE;
 
     private final Curve curve;
 
-    // degrees F => degrees F
+    // SG points => percentage
     private double[][] data = {
-            {0.0, 0.1}, // guess
-            {100.0, 100.3}, // guess
-            {150.0, 150.0}, // guess
-            {212.0, 210.0} // guess
+            {50.0, 90.0}, // guess
+            {60.0, 85.0}, // guess
+            {70.0, 80.0}, // guess
+            {80.0, 75.0}, // guess
+            {90.0, 70.0}, // guess
+            {100.0, 65.0}, // guess
+            {110.0, 60.0}, // guess
     };
 
-    TempCurve() {
+    EfficiencyCurve() {
         this.curve = x -> LinearInterpolator.interpolate(x, data);
     }
 

@@ -12,9 +12,19 @@ import java.util.function.DoubleBinaryOperator;
 public class StepIntegrator {
 
     public static double integrate(double a, double b, double step, DoubleBinaryOperator f) {
+
         Preconditions.checkArgument(a > 0D);
         Preconditions.checkArgument(b > 0D);
         Preconditions.checkArgument(step > 0D);
+
+        if (a == b) {
+            return f.applyAsDouble(a, b);
+        }
+
+        if (a + step >= b) {
+            return f.applyAsDouble(a, b);
+        }
+
         Preconditions.checkArgument(a < b);
         Preconditions.checkArgument(a + step < b);
 
