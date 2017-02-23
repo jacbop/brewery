@@ -25,26 +25,30 @@ public class VolumeChiller {
             } else {
                 double observedVolume = Double.parseDouble(volString);
                 double observedTemp = Double.parseDouble(tempString);
-                double vol1 = actualVolume(observedVolume, observedTemp);
+                double targetTemp = Constants.refTemp;
+                double vol0 = actualVolume(observedVolume, CtoF.toC(observedTemp), CtoF.toC(targetTemp));
                 context.out.println(
                         String.format(
                                 "Observed Volume (with chiller) %s @ %s F = Actual %s @ %s F",
-                                observedVolume, observedTemp, vol1, Constants.refTemp));
+                                observedVolume, observedTemp, vol0, Constants.refTemp));
                 context.exit(0);
             }
         }
     }
 
-    static double actualVolume(double observedVolume, double observedTemp) {
-        Curve curve = VolBetaCurve.INSTANCE.getCurve();
-        double vol2 = observedVolume - Observables.chillerDisplacement;
-        double temp2 = CtoF.toC(observedTemp);
-        double temp1 = CtoF.toC(Constants.refTemp);
-        double beta2 = curve.y(temp2);
-        double beta1 = curve.y(temp1);
-        // double vol1 = vol2 + (vol2 * ((beta1 + beta2) * 0.5) * (temp1 - temp2));
-        double vol1 = vol2 + (vol2 * beta2 * (temp1 - temp2));
-        return vol1;
+    static double actualVolume(double observedVolumeUnAdjusted, double observedTemp, double targetTemp) {
+        double observedVolume = observedVolumeUnAdjusted - Observables.chillerDisplacement;
+        double duv = deltaUnitVolume(observedTemp, targetTemp);
+        double delta = observedVolume * duv;
+        double actualVolume = observedVolume + delta;
+        return actualVolume;
     }
 
+    static double deltaUnitVolume(double temp0, double temp1) {
+        Curve curve = VolBetaCurve.INSTANCE.getCurve();
+        double beta1 = curve.y(temp1);
+        double beta0 = curve.y(temp0);
+        double dv = (((beta0 + beta1) * 0.5) * (temp1 - temp0));
+        return dv;
+    }
 }

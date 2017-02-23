@@ -10,6 +10,7 @@ import com.wilberding.brewery.data.Constants;
 import com.wilberding.brewery.data.VolBetaCurve;
 import com.wilberding.brewery.lib.CtoF;
 import com.wilberding.brewery.lib.Curve;
+import com.wilberding.brewery.lib.StepIntegrator;
 
 public class Volume {
 
@@ -24,11 +25,12 @@ public class Volume {
             } else {
                 double observedVolume = Double.parseDouble(volString);
                 double observedTemp = Double.parseDouble(tempString);
-                double vol0 = actualVolume(observedVolume, observedTemp);
+                double targetTemp = Constants.refTemp;
+                double targetVolume = actualVolume(observedVolume, observedTemp, targetTemp);
                 context.out.println(
                         String.format(
                                 "Observed Volume (no chiller) %s @ %s F = Actual %s @ %s F",
-                                observedVolume, observedTemp, vol0, Constants.refTemp
+                                observedVolume, observedTemp, targetVolume, targetTemp
                         )
                 );
                 context.exit(0);
@@ -36,24 +38,20 @@ public class Volume {
         }
     }
 
-    static double actualVolume(double observedVolume, double observedTemp) {
-        Curve curve = VolBetaCurve.INSTANCE.getCurve();
-        double temp1 = CtoF.toC(Constants.refTemp);
-        double temp0 =  CtoF.toC(observedTemp);
-        double vol0 = observedVolume;
-        double beta0 = curve.y(temp0);
-        double vol1 = vol0 + (vol0 * beta0 * (temp1 - temp0));
-        return vol1;
+    static double actualVolume(double observedVolume, double observedTemp, double targetTemp) {
+        double duv = StepIntegrator.integrate(targetTemp, observedTemp, 1, Volume::deltaUnitVolume);
+        double duvSign = (observedTemp > targetTemp) ? -1.0 : 1.0;
+        double delta = observedVolume * duv * duvSign;
+        double actualVolume = observedVolume + delta;
+        return actualVolume;
     }
 
-    static void integrate(double temp0, double temp1, double vol0) {
-        boolean heating = temp0 < temp1;
-        double t0 = temp0;
-        double t1 = (heating) ? Math.min(temp0 + 1.0, temp1) : Math.max(temp0 - 1.0, temp1);
-        double v0 = vol0;
-        do {
-            System.out.println();
-        } while (t1 < temp1);
+    static double deltaUnitVolume(double temp0, double temp1) {
+        Curve curve = VolBetaCurve.INSTANCE.getCurve();
+        double beta1 = curve.y(temp1);
+        double beta0 = curve.y(temp0);
+        double dv = (((beta0 + beta1) * 0.5) * (temp1 - temp0));
+        return dv;
     }
 
 }
