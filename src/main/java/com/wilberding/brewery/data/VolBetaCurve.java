@@ -5,7 +5,7 @@
  */
 package com.wilberding.brewery.data;
 
-import com.wilberding.brewery.lib.CtoF;
+import com.wilberding.brewery.lib.Temperature;
 import com.wilberding.brewery.lib.Curve;
 import com.wilberding.brewery.lib.LinearInterpolator;
 
@@ -36,7 +36,7 @@ public enum VolBetaCurve {
     };
 
     VolBetaCurve() {
-        this.curve = x -> LinearInterpolator.interpolate(CtoF.toC(x), data);
+        this.curve = x -> LinearInterpolator.interpolate(Temperature.toC(x), data);
     }
 
     public Curve getCurve() {

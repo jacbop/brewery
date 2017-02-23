@@ -9,27 +9,27 @@ import com.martiansoftware.nailgun.NGContext;
 import com.wilberding.brewery.data.Constants;
 import com.wilberding.brewery.data.Observables;
 import com.wilberding.brewery.data.VolBetaCurve;
-import com.wilberding.brewery.lib.CtoF;
+import com.wilberding.brewery.lib.Temperature;
 import com.wilberding.brewery.lib.Curve;
 
 public class VolumeChiller {
 
     public static void nailMain(NGContext context) {
-        String volString = javax.swing.JOptionPane.showInputDialog(null, "Observed Volume:");
+        String volString = javax.swing.JOptionPane.showInputDialog(null, "Observed Volume (gal):");
         if (volString == null) {
             context.exit(1);
         } else {
-            String tempString = javax.swing.JOptionPane.showInputDialog(null, "Temp:");
+            String tempString = javax.swing.JOptionPane.showInputDialog(null, "Temp (F):");
             if (tempString == null) {
                 context.exit(1);
             } else {
                 double observedVolume = Double.parseDouble(volString);
                 double observedTemp = Double.parseDouble(tempString);
                 double targetTemp = Constants.refTemp;
-                double vol0 = actualVolume(observedVolume, CtoF.toC(observedTemp), CtoF.toC(targetTemp));
+                double vol0 = actualVolume(observedVolume, Temperature.toC(observedTemp), Temperature.toC(targetTemp));
                 context.out.println(
                         String.format(
-                                "Observed Volume (with chiller) %s @ %s F = Actual %s @ %s F",
+                                "Observed Volume (with chiller) %s gal @ %s F = Actual %s gal @ %s F",
                                 observedVolume, observedTemp, vol0, Constants.refTemp));
                 context.exit(0);
             }

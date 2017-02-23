@@ -8,18 +8,17 @@ package com.wilberding.brewery;
 import com.martiansoftware.nailgun.NGContext;
 import com.wilberding.brewery.data.Constants;
 import com.wilberding.brewery.data.VolBetaCurve;
-import com.wilberding.brewery.lib.CtoF;
 import com.wilberding.brewery.lib.Curve;
 import com.wilberding.brewery.lib.StepIntegrator;
 
 public class Volume {
 
     public static void nailMain(NGContext context) {
-        String volString = javax.swing.JOptionPane.showInputDialog(null, "Observed Volume:");
+        String volString = javax.swing.JOptionPane.showInputDialog(null, "Observed Volume (gal):");
         if (volString == null) {
             context.exit(1);
         } else {
-            String tempString = javax.swing.JOptionPane.showInputDialog(null, "Temp:");
+            String tempString = javax.swing.JOptionPane.showInputDialog(null, "Temp (F):");
             if (tempString == null) {
                 context.exit(1);
             } else {
@@ -29,7 +28,7 @@ public class Volume {
                 double targetVolume = actualVolume(observedVolume, observedTemp, targetTemp);
                 context.out.println(
                         String.format(
-                                "Observed Volume (no chiller) %s @ %s F = Actual %s @ %s F",
+                                "Observed Volume (no chiller) %s gal @ %s F = Actual %s gal @ %s F",
                                 observedVolume, observedTemp, targetVolume, targetTemp
                         )
                 );

@@ -5,7 +5,7 @@
  */
 package com.wilberding.brewery.lib;
 
-public class CtoF {
+public class Temperature {
 
     public static double toF(double c) {
         return ((c * 9D) / 5D) + 32D;
