@@ -18,8 +18,8 @@ public enum TempCurve {
     private double[][] data = {
             {0.0, 0.1}, // guess
             {100.0, 100.3}, // guess
-            {150.0, 150.0}, // guess
-            {212.0, 210.0} // guess
+            {152.0, 152.0}, // guess
+            {211.3, 212.9} // guess
     };
 
     TempCurve() {

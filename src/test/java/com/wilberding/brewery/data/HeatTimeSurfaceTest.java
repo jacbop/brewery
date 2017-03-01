@@ -15,21 +15,21 @@ public class HeatTimeSurfaceTest {
     @Test
     public void testBasics10() {
         Surface sut = HeatTimeSurface.INSTANCE.getSurface();
-        assertThat(sut.z(50.0, 10.0)).isEqualTo(36.97014925373134);
-        assertThat(sut.z(100.0, 10.0)).isEqualTo(54.88059701492537);
-        assertThat(sut.z(149.0, 10.0)).isEqualTo(72.43283582089552);
-        assertThat(sut.z(150.0, 10.0)).isEqualTo(72.7910447761194);
-        assertThat(sut.z(212.0, 10.0)).isEqualTo(95.0);
+        assertThat(sut.z(50.0, 10.0)).isEqualTo(25.96894409937888);
+        assertThat(sut.z(100.0, 10.0)).isEqualTo(43.20945945945946);
+        assertThat(sut.z(149.0, 10.0)).isEqualTo(61.6);
+        assertThat(sut.z(150.0, 10.0)).isEqualTo(61.93333333333334);
+        assertThat(sut.z(212.0, 10.0)).isEqualTo(87.0);
     }
 
     @Test
     public void testBasics13() {
         Surface sut = HeatTimeSurface.INSTANCE.getSurface();
-        assertThat(sut.z(50.0, 13.0)).isEqualTo(37.592537313432835);
-        assertThat(sut.z(100.0, 13.0)).isEqualTo(60.82952425373134);
-        assertThat(sut.z(149.0, 13.0)).isEqualTo(83.70642324093816);
-        assertThat(sut.z(150.0, 13.0)).isEqualTo(84.19776119402985);
-        assertThat(sut.z(212.0, 13.0)).isEqualTo(117.5);
+        assertThat(sut.z(50.0, 13.0)).isEqualTo(34.842236024844716);
+        assertThat(sut.z(100.0, 13.0)).isEqualTo(57.91173986486486);
+        assertThat(sut.z(149.0, 13.0)).isEqualTo(80.99821428571428);
+        assertThat(sut.z(150.0, 13.0)).isEqualTo(81.48333333333333);
+        assertThat(sut.z(212.0, 13.0)).isEqualTo(115.5);
     }
 
     @Test

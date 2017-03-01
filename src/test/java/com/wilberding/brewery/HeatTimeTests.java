@@ -13,9 +13,9 @@ public class HeatTimeTests {
 
     @Test
     public void basics10() {
-        assertThat(HeatTime.heatTime(32.0, 212.0, 10.0)).isEqualTo(66.0);
-        assertThat(HeatTime.heatTime(55.0, 165.0, 10.0)).isEqualTo(39.40298507462686);
-        assertThat(HeatTime.heatTime(141.0, 212.0, 10.0)).isEqualTo(25.43283582089552);
+        assertThat(HeatTime.heatTime(32.0, 212.0, 10.0)).isEqualTo(62.0);
+        assertThat(HeatTime.heatTime(55.0, 165.0, 10.0)).isEqualTo(39.55126350718966);
+        assertThat(HeatTime.heatTime(141.0, 212.0, 10.0)).isEqualTo(28.306122448979586);
     }
 
     @Test
