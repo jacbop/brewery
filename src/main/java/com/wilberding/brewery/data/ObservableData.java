@@ -23,10 +23,16 @@ public final class ObservableData {
     // grain saturation amount
 
     /**
+     * TEMP ADJUSTMENTS
+     */
+    // Delta on PID = 11.0F
+    // Specific probe =
+
+    /**
      * TEMP CURVE
      */
 
-    // degrees F => degrees F
+    // degrees F => degrees F (for probe = )
     public static final double[][] tempCurveData = {
             {0.0, 0.1}, // guess
             {100.0, 100.3}, // guess
