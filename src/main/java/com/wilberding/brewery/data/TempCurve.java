@@ -15,7 +15,7 @@ public enum TempCurve {
     private final Curve curve;
 
     TempCurve() {
-        this.curve = x -> LinearInterpolator.interpolate(x, Observables.tempCurveData);
+        this.curve = x -> LinearInterpolator.interpolate(x, ObservableData.tempCurveData);
     }
 
     public Curve getCurve() {

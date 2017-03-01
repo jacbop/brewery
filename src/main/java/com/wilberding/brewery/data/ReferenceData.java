@@ -5,7 +5,7 @@
  */
 package com.wilberding.brewery.data;
 
-public class Constants {
+public final class ReferenceData {
 
     /**
      * ARBITRARY REFERENCE TEMP FOR WATER CALCS

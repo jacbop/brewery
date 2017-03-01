@@ -5,7 +5,7 @@
  */
 package com.wilberding.brewery.data;
 
-public class Observables {
+public final class ObservableData {
 
     // TODO read this data from csv, xml or json; either from local file or rest call
 

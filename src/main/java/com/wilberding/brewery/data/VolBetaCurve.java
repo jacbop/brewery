@@ -21,7 +21,7 @@ public enum VolBetaCurve {
     private final Curve curve;
 
     VolBetaCurve() {
-        this.curve = x -> LinearInterpolator.interpolate(Temperature.toC(x), Constants.betaCoefficientData);
+        this.curve = x -> LinearInterpolator.interpolate(Temperature.toC(x), ReferenceData.betaCoefficientData);
     }
 
     public Curve getCurve() {

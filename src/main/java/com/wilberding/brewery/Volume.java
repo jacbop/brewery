@@ -6,7 +6,7 @@
 package com.wilberding.brewery;
 
 import com.martiansoftware.nailgun.NGContext;
-import com.wilberding.brewery.data.Constants;
+import com.wilberding.brewery.data.ReferenceData;
 import com.wilberding.brewery.data.VolBetaCurve;
 import com.wilberding.brewery.lib.Curve;
 import com.wilberding.brewery.lib.StepIntegrator;
@@ -24,7 +24,7 @@ public class Volume {
             } else {
                 double observedVolume = Double.parseDouble(volString);
                 double observedTemp = Double.parseDouble(tempString);
-                double targetTemp = Constants.refTemp;
+                double targetTemp = ReferenceData.refTemp;
                 double targetVolume = actualVolume(observedVolume, observedTemp, targetTemp);
                 context.out.println(
                         String.format(

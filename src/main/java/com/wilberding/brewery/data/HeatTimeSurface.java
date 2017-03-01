@@ -15,8 +15,8 @@ public enum HeatTimeSurface {
 
     HeatTimeSurface() {
         this.surface = (x, y) -> {
-            double at10 = LinearInterpolator.interpolate(x, Observables.heatTimeData10);
-            double at14 = LinearInterpolator.interpolate(x, Observables.heatTimeData14);
+            double at10 = LinearInterpolator.interpolate(x, ObservableData.heatTimeData10);
+            double at14 = LinearInterpolator.interpolate(x, ObservableData.heatTimeData14);
             double[][] curves = {{10.0, at10}, {14.0, at14}};
             double z = LinearInterpolator.interpolate(y, curves);
             return z;

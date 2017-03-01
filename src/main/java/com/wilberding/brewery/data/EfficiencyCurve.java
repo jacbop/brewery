@@ -14,7 +14,7 @@ public enum EfficiencyCurve {
     private final Curve curve;
 
     EfficiencyCurve() {
-        this.curve = x -> LinearInterpolator.interpolate(x, Observables.efficiencyData);
+        this.curve = x -> LinearInterpolator.interpolate(x, ObservableData.efficiencyData);
     }
 
     public Curve getCurve() {

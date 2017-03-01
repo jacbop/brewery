@@ -6,8 +6,8 @@
 package com.wilberding.brewery;
 
 import com.martiansoftware.nailgun.NGContext;
-import com.wilberding.brewery.data.Constants;
-import com.wilberding.brewery.data.Observables;
+import com.wilberding.brewery.data.ReferenceData;
+import com.wilberding.brewery.data.ObservableData;
 import com.wilberding.brewery.data.VolBetaCurve;
 import com.wilberding.brewery.lib.Curve;
 import com.wilberding.brewery.lib.Temperature;
@@ -25,19 +25,19 @@ public class VolumeChiller {
             } else {
                 double observedVolume = Double.parseDouble(volString);
                 double observedTemp = Double.parseDouble(tempString);
-                double targetTemp = Constants.refTemp;
+                double targetTemp = ReferenceData.refTemp;
                 double vol0 = actualVolume(observedVolume, Temperature.toC(observedTemp), Temperature.toC(targetTemp));
                 context.out.println(
                         String.format(
                                 "Observed Volume (with chiller) %s gal @ %s F = Actual %s gal @ %s F",
-                                observedVolume, observedTemp, vol0, Constants.refTemp));
+                                observedVolume, observedTemp, vol0, ReferenceData.refTemp));
                 context.exit(0);
             }
         }
     }
 
     static double actualVolume(double observedVolumeUnAdjusted, double observedTemp, double targetTemp) {
-        double observedVolume = observedVolumeUnAdjusted - Observables.chillerDisplacement;
+        double observedVolume = observedVolumeUnAdjusted - ObservableData.chillerDisplacement;
         double duv = deltaUnitVolume(observedTemp, targetTemp);
         double delta = observedVolume * duv;
         double actualVolume = observedVolume + delta;
