@@ -14,16 +14,8 @@ public enum TempCurve {
 
     private final Curve curve;
 
-    // degrees F => degrees F
-    private double[][] data = {
-            {0.0, 0.1}, // guess
-            {100.0, 100.3}, // guess
-            {152.0, 152.0}, // guess
-            {211.3, 212.9} // guess
-    };
-
     TempCurve() {
-        this.curve = x -> LinearInterpolator.interpolate(x, data);
+        this.curve = x -> LinearInterpolator.interpolate(x, Observables.tempCurveData);
     }
 
     public Curve getCurve() {

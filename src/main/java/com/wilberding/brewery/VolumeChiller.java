@@ -9,8 +9,8 @@ import com.martiansoftware.nailgun.NGContext;
 import com.wilberding.brewery.data.Constants;
 import com.wilberding.brewery.data.Observables;
 import com.wilberding.brewery.data.VolBetaCurve;
-import com.wilberding.brewery.lib.Temperature;
 import com.wilberding.brewery.lib.Curve;
+import com.wilberding.brewery.lib.Temperature;
 
 public class VolumeChiller {
 

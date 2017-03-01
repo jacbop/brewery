@@ -36,3 +36,5 @@ pounds of grain and quanitity of hops
 split Observables from Constants and Reference
 factor curves with input and output transformations
 centralize calc logic in one place sep from commands
+
+## DME or water additions to correct gravity
