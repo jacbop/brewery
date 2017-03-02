@@ -38,3 +38,6 @@ factor curves with input and output transformations
 centralize calc logic in one place sep from commands
 
 ## DME or water additions to correct gravity
+
+Trying Circle, Github and Gitter integration
+
