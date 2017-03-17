@@ -1,6 +1,9 @@
 machine:
   java:
     version: oraclejdk8
+dependencies:
+  pre:
+    - mvn install -DskipTests
 notify:
   webhooks:
     # A list of hook hashes, containing the url field
