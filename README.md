@@ -27,7 +27,7 @@ chiller, dead space, thermal expansion, ground water temp
 grain temp, absorption
 
 ## efficiency
-pounds of grain and quanitity of hops
+pounds of grain and quantity of hops
 
 ## time to heat, to cool
 
@@ -41,3 +41,4 @@ centralize calc logic in one place sep from commands
 
 Trying Circle, Github and Gitter integration
 
+https://haandbryg.dk/mashcalc.html#rest

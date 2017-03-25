@@ -13,19 +13,29 @@ public final class ObservableData {
      * VOLUME ADJUSTMENTS
      */
 
-    // amount at left bottom of kettle when ball valve is opened with no racking arm
+    // water to grain ratio
+    public static final double waterToGrainRatio = 1.33; // qts/lb
+
+    // amount left at bottom of tun when manifold is tight and ball valve is opened
+    public static final double mashTunDeadSpace = 0.625; // gal
+
+    // amount left at bottom of kettle when ball valve is opened with no racking arm
     // 1.125, 1.20
     public static final double kettleDeadSpace = 1.125; // gal
 
     // amount of displacement when chiller is inserted
     public static final double chillerDisplacement = 0.3; // gal
 
-    // grain saturation amount
+    // mash tun thermal mass
+    // https://haandbryg.dk/mashcalc.html#heattun
+    // 64F tun struck with 10 gal water @ 166 F stabilized to 157 F = 3.87 qt / 4 qt/gal * 8.33 lb/gal
+    // this was with hose/pump transfer and reasonable amount of stirring with lid open to simulate typical mash
+    public static final double mashTunThermalMass = 8.06; // lb
 
     /**
      * TEMP ADJUSTMENTS
      */
-    // Delta on PID = 11.0F
+    // Delta on PID = 13.0F
     // Specific probe =
 
     /**
@@ -35,8 +45,9 @@ public final class ObservableData {
     // degrees F => degrees F (for probe = )
     public static final double[][] tempCurveData = {
             {0.0, 0.1}, // guess
-            {100.0, 100.3}, // guess
-            {152.0, 152.0}, // guess
+            {60.1, 62.6}, // guess
+            {103.3, 103.7}, // guess
+            {152, 152.0}, // observed
             {211.3, 212.9} // guess
     };
 

@@ -13,8 +13,8 @@ public class TempTests {
 
     @Test
     public void basics() {
-        assertThat(Temp.actualTemp(32.0)).isEqualTo(32.164);
-        assertThat(Temp.actualTemp(68.0)).isEqualTo(68.236);
+        assertThat(Temp.actualTemp(32.0)).isEqualTo(33.37787021630616);
+        assertThat(Temp.actualTemp(68.0)).isEqualTo(70.11597222222223);
         assertThat(Temp.actualTemp(152.0)).isEqualTo(152.0);
         assertThat(Temp.actualTemp(212.0)).isEqualTo(212.9);
     }
